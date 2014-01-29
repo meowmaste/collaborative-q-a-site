@@ -2,6 +2,7 @@ CollaborativeQASite::Application.routes.draw do
   devise_for :users
   resources :question_answers
 
+  get "/authors/:id" => "users#show"
   root :to  => "question_answers#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
