@@ -10,6 +10,7 @@ class QuestionAnswersController < ApplicationController
   # GET /question_answers/1
   # GET /question_answers/1.json
   def show
+    @authors = @question_answer.users
   end
 
   # GET /question_answers/new
@@ -25,6 +26,9 @@ class QuestionAnswersController < ApplicationController
   # POST /question_answers.json
   def create
     @question_answer = QuestionAnswer.new(question_answer_params)
+    if user_signed_in?
+      current_user.question_answers << @question_answer
+    end
 
     respond_to do |format|
       if @question_answer.save
@@ -40,6 +44,10 @@ class QuestionAnswersController < ApplicationController
   # PATCH/PUT /question_answers/1
   # PATCH/PUT /question_answers/1.json
   def update
+    if user_signed_in?
+      current_user.question_answers << @question_answer
+    end
+
     respond_to do |format|
       if @question_answer.update(question_answer_params)
         format.html { redirect_to @question_answer, notice: 'Question answer was successfully updated.' }
