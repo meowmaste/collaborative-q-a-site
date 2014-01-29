@@ -7,4 +7,4 @@ The key feature of this app is that it will track all who is editing what. Each 
 
 Since one user can edit many different questions, and any given question can be edited by many/any users, use a has_and_belongs_to_many (aka: habtm) association. 
 
-[Screenshot](http://i.imgur.com/UR7WxDX.png)
+![Screenshot](http://i.imgur.com/UR7WxDX.png)
