@@ -26,12 +26,12 @@ class QuestionAnswersController < ApplicationController
   # POST /question_answers.json
   def create
     @question_answer = QuestionAnswer.new(question_answer_params)
-    if user_signed_in?
-      current_user.question_answers << @question_answer
-    end
-
+    
     respond_to do |format|
       if @question_answer.save
+        if user_signed_in?
+          current_user.question_answers << @question_answer
+        end
         format.html { redirect_to @question_answer, notice: 'Question answer was successfully created.' }
         format.json { render action: 'show', status: :created, location: @question_answer }
       else

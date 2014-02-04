@@ -12,7 +12,7 @@
 
 <h2>Authors</h2>
 <ul>
-	<% @authors.each do |a| %>
+	<% @authors.uniq.reverse.each do |a| %>
 	<li><%= a.email %></li>
 	<% end %>
 </ul>
